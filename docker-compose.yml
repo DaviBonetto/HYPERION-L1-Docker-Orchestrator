@@ -36,3 +36,14 @@ services:
       - redis_data:/data
     networks:
       - titan_network
+
+  genesis:
+    build:
+      context: ../GENESIS-L1-HighPerf-URL-Shortener
+      dockerfile: Dockerfile
+    container_name: titan_genesis
+    environment:
+      DATABASE_URL: postgres://${POSTGRES_USER:-titan}:${POSTGRES_PASSWORD:-changeme}@database:5432/${POSTGRES_DB:-titan}
+      RUST_LOG: info
+    networks:
+      - titan_network
