@@ -27,3 +27,12 @@ services:
       - pg_data:/var/lib/postgresql/data
     networks:
       - titan_network
+
+  cache:
+    image: redis:alpine
+    container_name: titan_redis
+    command: redis-server --requirepass ${REDIS_PASSWORD:-changeme}
+    volumes:
+      - redis_data:/data
+    networks:
+      - titan_network
