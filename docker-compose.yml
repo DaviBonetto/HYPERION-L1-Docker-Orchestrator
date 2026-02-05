@@ -14,3 +14,16 @@ volumes:
     name: titan_pg_data
   redis_data:
     name: titan_redis_data
+
+services:
+  database:
+    image: postgres:15-alpine
+    container_name: titan_postgres
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-titan}
+      POSTGRES_USER: ${POSTGRES_USER:-titan}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-changeme}
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    networks:
+      - titan_network
