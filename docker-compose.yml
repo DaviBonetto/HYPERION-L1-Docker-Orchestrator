@@ -1,0 +1,10 @@
+# HYPERION - Docker Orchestrator
+# Titan Protocol System 12/300
+version: '3.8'
+
+networks:
+  titan_network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.28.0.0/16
