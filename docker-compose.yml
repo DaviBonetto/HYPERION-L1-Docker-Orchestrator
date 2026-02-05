@@ -33,6 +33,14 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 512M
+        reservations:
+          cpus: '0.25'
+          memory: 128M
 
   cache:
     image: redis:alpine
@@ -48,6 +56,14 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 256M
+        reservations:
+          cpus: '0.1'
+          memory: 64M
 
   genesis:
     build:
@@ -63,6 +79,14 @@ services:
         condition: service_healthy
     networks:
       - titan_network
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 256M
+        reservations:
+          cpus: '0.25'
+          memory: 64M
 
   vortex:
     build:
@@ -76,6 +100,14 @@ services:
       - ./logs/vortex:/app/logs
     networks:
       - titan_network
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 1G
+        reservations:
+          cpus: '0.5'
+          memory: 256M
 
   cerberus:
     build:
@@ -96,3 +128,11 @@ services:
       - vortex
     networks:
       - titan_network
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 256M
+        reservations:
+          cpus: '0.25'
+          memory: 64M
