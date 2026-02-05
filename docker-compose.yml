@@ -27,6 +27,11 @@ services:
       - pg_data:/var/lib/postgresql/data
     networks:
       - titan_network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-titan}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   cache:
     image: redis:alpine
@@ -36,6 +41,11 @@ services:
       - redis_data:/data
     networks:
       - titan_network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   genesis:
     build:
@@ -45,5 +55,8 @@ services:
     environment:
       DATABASE_URL: postgres://${POSTGRES_USER:-titan}:${POSTGRES_PASSWORD:-changeme}@database:5432/${POSTGRES_DB:-titan}
       RUST_LOG: info
+    depends_on:
+      database:
+        condition: service_healthy
     networks:
       - titan_network
