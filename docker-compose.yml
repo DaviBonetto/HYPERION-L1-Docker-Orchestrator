@@ -68,5 +68,7 @@ services:
     container_name: titan_vortex
     environment:
       REDIS_URL: redis://:${REDIS_PASSWORD:-changeme}@cache:6379
+    volumes:
+      - ./logs/vortex:/app/logs
     networks:
       - titan_network
