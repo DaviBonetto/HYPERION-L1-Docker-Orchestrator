@@ -78,11 +78,16 @@ services:
       context: ../CERBERUS-L2-Gateway-Security
       dockerfile: Dockerfile
     container_name: titan_cerberus
+    ports:
+      - "8000:8000"
     environment:
       GENESIS_URL: http://genesis:8080
+      VORTEX_URL: http://vortex:8000
       REDIS_URL: redis://:${REDIS_PASSWORD:-changeme}@cache:6379
+      RUST_LOG: info
     depends_on:
       - cache
       - genesis
+      - vortex
     networks:
       - titan_network
