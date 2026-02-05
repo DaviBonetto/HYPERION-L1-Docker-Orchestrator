@@ -43,3 +43,58 @@ HYPERION-L1-Docker-Orchestrator/
 ├── .gitignore
 └── README.md
 ```
+
+## 🏗️ Architecture
+
+```mermaid
+flowchart TB
+    subgraph External
+        Client[🌐 Client]
+    end
+
+    subgraph HYPERION["🐳 Docker Compose Orchestrator"]
+        subgraph Gateway
+            Cerberus[🔒 CERBERUS<br/>Gateway Security<br/>:8000]
+        end
+
+        subgraph Services
+            Genesis[⚡ GENESIS<br/>URL Shortener<br/>:8080]
+            Vortex[🌀 VORTEX<br/>Research Agent]
+        end
+
+        subgraph Data
+            Postgres[(🐘 PostgreSQL<br/>:5432)]
+            Redis[(⚡ Redis<br/>:6379)]
+        end
+    end
+
+    Client --> Cerberus
+    Cerberus --> Genesis
+    Cerberus --> Vortex
+    Genesis --> Postgres
+    Vortex --> Redis
+    Cerberus --> Redis
+
+    style Cerberus fill:#e74c3c
+    style Genesis fill:#3498db
+    style Vortex fill:#9b59b6
+    style Postgres fill:#2ecc71
+    style Redis fill:#e67e22
+```
+
+## 📊 Service Details
+
+| Service        | Port            | Technology | Purpose                          |
+| -------------- | --------------- | ---------- | -------------------------------- |
+| **Cerberus**   | 8000            | Rust       | API Gateway, Rate Limiting, Auth |
+| **Genesis**    | 8080 (internal) | Rust       | URL Shortening Service           |
+| **Vortex**     | - (internal)    | Python     | AI Research Agent                |
+| **PostgreSQL** | 5432 (internal) | -          | Primary Database                 |
+| **Redis**      | 6379 (internal) | -          | Cache & Rate Limiting            |
+
+## 🔒 Security Notes
+
+- Only **Cerberus** exposes ports to the host
+- All internal services communicate via `titan_network`
+- Redis requires password authentication
+- Resource limits prevent runaway containers
