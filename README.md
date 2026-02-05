@@ -2,7 +2,8 @@
 
 [![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://www.docker.com/)
 [![Docker Compose](https://img.shields.io/badge/Docker%20Compose-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://docs.docker.com/compose/)
-[![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)](https://www.linux.org/)
+[![Rust](https://img.shields.io/badge/Rust-000000?style=for-the-badge&logo=rust&logoColor=white)](https://www.rust-lang.org/)
+[![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
 [![Redis](https://img.shields.io/badge/Redis-DC382D?style=for-the-badge&logo=redis&logoColor=white)](https://redis.io/)
 
@@ -40,6 +41,8 @@ docker compose logs -f
 HYPERION-L1-Docker-Orchestrator/
 ├── docker-compose.yml     # Main orchestration file
 ├── .env.example           # Environment template
+├── Makefile               # Convenience commands
+├── LICENSE                # MIT License
 ├── .gitignore
 └── README.md
 ```
@@ -98,3 +101,26 @@ flowchart TB
 - All internal services communicate via `titan_network`
 - Redis requires password authentication
 - Resource limits prevent runaway containers
+
+## 🛠️ Makefile Commands
+
+```bash
+make help      # Show available commands
+make up        # Start all services
+make down      # Stop all services
+make logs      # Follow service logs
+make build     # Rebuild images
+make clean     # Remove everything
+make restart   # Restart all services
+```
+
+## 📜 License
+
+MIT License - see [LICENSE](LICENSE) for details.
+
+---
+
+<p align="center">
+  <strong>🔱 Titan Protocol</strong><br>
+  <em>System 12/300 - HYPERION Docker Orchestrator</em>
+</p>
