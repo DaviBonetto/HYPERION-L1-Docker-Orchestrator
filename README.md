@@ -1,22 +1,31 @@
-# 🌐 HYPERION - Docker Orchestrator
+<div align="center">
+
+```
+  ██╗  ██╗██╗   ██╗██████╗ ███████╗██████╗ ██╗ ██████╗ ███╗   ██╗
+  ██║  ██║╚██╗ ██╔╝██╔══██╗██╔════╝██╔══██╗██║██╔═══██╗████╗  ██║
+  ███████║ ╚████╔╝ ██████╔╝█████╗  ██████╔╝██║██║   ██║██╔██╗ ██║
+  ██╔══██║  ╚██╔╝  ██╔═══╝ ██╔══╝  ██╔══██╗██║██║   ██║██║╚██╗██║
+  ██║  ██║   ██║   ██║     ███████╗██║  ██║██║╚██████╔╝██║ ╚████║
+  ╚═╝  ╚═╝   ╚═╝   ╚═╝     ╚══════╝╚═╝  ╚═╝╚═╝ ╚═════╝ ╚═╝  ╚═══╝
+```
+
+### 🐳 System 12/300: Docker Compose Orchestrator
 
 [![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://www.docker.com/)
 [![Docker Compose](https://img.shields.io/badge/Docker%20Compose-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://docs.docker.com/compose/)
-[![Rust](https://img.shields.io/badge/Rust-000000?style=for-the-badge&logo=rust&logoColor=white)](https://www.rust-lang.org/)
-[![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
 [![Redis](https://img.shields.io/badge/Redis-DC382D?style=for-the-badge&logo=redis&logoColor=white)](https://redis.io/)
+[![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)](LICENSE)
 
-> **Titan Protocol System 12/300**  
-> Unified Docker orchestration for the Titan Protocol microservices ecosystem.
+**Unified Orchestration for the Titan Protocol Microservices**
 
-## 📋 Overview
+---
 
-HYPERION is the central Docker Compose orchestrator that coordinates all Titan Protocol services:
+[Quick Start](#-quick-start) • [Architecture](#-architecture) • [Services](#-service-details)
 
-- **GENESIS** - High-Performance URL Shortener (Rust, L1)
-- **VORTEX** - Research Agent with LangGraph (Python, L4)
-- **CERBERUS** - Gateway Security Service (Rust, L2)
+</div>
+
+---
 
 ## 🚀 Quick Start
 
@@ -35,17 +44,7 @@ docker compose up -d
 docker compose logs -f
 ```
 
-## 📁 Project Structure
-
-```
-HYPERION-L1-Docker-Orchestrator/
-├── docker-compose.yml     # Main orchestration file
-├── .env.example           # Environment template
-├── Makefile               # Convenience commands
-├── LICENSE                # MIT License
-├── .gitignore
-└── README.md
-```
+---
 
 ## 🏗️ Architecture
 
@@ -85,6 +84,8 @@ flowchart TB
     style Redis fill:#e67e22
 ```
 
+---
+
 ## 📊 Service Details
 
 | Service        | Port            | Technology | Purpose                          |
@@ -95,12 +96,29 @@ flowchart TB
 | **PostgreSQL** | 5432 (internal) | -          | Primary Database                 |
 | **Redis**      | 6379 (internal) | -          | Cache & Rate Limiting            |
 
+---
+
+## 📁 Project Structure
+
+```
+HYPERION-L1-Docker-Orchestrator/
+├── docker-compose.yml     # Main orchestration file
+├── .env.example           # Environment template
+├── Makefile               # Convenience commands
+├── LICENSE                # MIT License
+└── README.md
+```
+
+---
+
 ## 🔒 Security Notes
 
 - Only **Cerberus** exposes ports to the host
 - All internal services communicate via `titan_network`
 - Redis requires password authentication
 - Resource limits prevent runaway containers
+
+---
 
 ## 🛠️ Makefile Commands
 
@@ -111,16 +129,24 @@ make down      # Stop all services
 make logs      # Follow service logs
 make build     # Rebuild images
 make clean     # Remove everything
-make restart   # Restart all services
 ```
-
-## 📜 License
-
-MIT License - see [LICENSE](LICENSE) for details.
 
 ---
 
-<p align="center">
-  <strong>🔱 Titan Protocol</strong><br>
-  <em>System 12/300 - HYPERION Docker Orchestrator</em>
-</p>
+## 🔗 Titan Protocol Initiative
+
+| System     | Name         | Technology  |
+| ---------- | ------------ | ----------- |
+| 08/300     | HERMES       | Go + gRPC   |
+| 09/300     | CERBERUS     | Rust + Axum |
+| **12/300** | **HYPERION** | **Docker**  |
+
+---
+
+<div align="center">
+
+**Built with 🐳 Docker + ⚡ Compose by [Davi Bonetto](https://github.com/DaviBonetto)**
+
+_Part of the Titan Protocol Initiative_
+
+</div>
