@@ -27,7 +27,7 @@
 
 ---
 
-## 🚀 Quick Star
+## 🚀 Quick Start
 
 ```bash
 # Clone the repository
